@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body>
+    <header>
+        <h1>MP3/MP4 YouTube Downloader</h1>
+        <h4>Just replace the "youtube.com" with "onlix.me"!</h4>
+    </header>
+
+    <main>
+        <h3><a href="{{ url }}" style="color:rgb(175, 38, 238);">{{ title }}</a></h3>
+        <h4>{{ author }}・{{ views }} Views</h4>
+
+        <p>Please choose what to download.</p>
+
+        
+        {% for stream in streams %}
+
+            <a target="_blank" href="{{ stream.url }}" download="{{ stream.url }}"><button style="color: white; width: 50%; text-align: left; font-size: 1.5rem;">{{ stream.type }} <strong>{{ stream.quality }}</strong> {{ stream.size }}{{ stream.emoji }} <code>{{ stream.itag }}</code></button></a>
+
+        {% endfor %}
+
+        <h3>How do I download a file?</h3>
+        <h5>First, click one of the buttons above. After this, to actually download the file, you may need to right-click (or long-press on mobile) and choose "Save Video As..." (or "Save Page As..."). On mobile devices, you may need to open the player menu (the ...-dots) and tap "Download".</h5>
+
+        <h3>Why is the best quality without audio?</h3>
+        <h5>It's due to YouTube restrictions. But GOOD NEWS! I'm working on a (free, but you may ask kindly first) pro version of this download which will automatically merge the best audio and video together to offer you a full quality experience.</h5>
+
+        <h3>Why is there a "pro" version, and what does it do?</h3>
+        <h5>Click <a href="pro">here</a> for info!</h5>
+     
+        <h3>What does "pro" cost?</h3>
+        <h5><i>Nothing!</i> I'm <u>not</u> kidding. It's free!</h5>
+
+        <img src="{{ image }}">
+        
+        <p>You can also view the subtitles by appending <code>&cc=(language code)</code> to the URL, for example <code>https://onlix.me/watch?v=NFHDHcs4BvQ&cc=en</code></p>
+        <p>In addition to this, to directly download the file, you can append <code>&dl=(itag)</code> to the URL: Look for the red numbers on the download buttons and choose one like so: <code>https://onlix.me/watch?v=NFHDHcs4BvQ&dl=18</code>. The preparing of the download might take several seconds.</p>
+
+
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+
+</html>

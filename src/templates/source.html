@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'head.html' %}
+
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <h2>Source Code</h2>
+        <h5>Licensed under MIT.</h5>
+        
+        <p>The following is the official, 100% up-to-date source code, directly read from the files!</p>
+
+        {% for file in files %}
+            <h3>{{ file.name }}</h3>
+
+            <pre class="brush:py;">>
+                <code>
+                    {{ file.code }}
+                </code>    
+            </pre>
+        {% endfor %}
+    </main>
+
+    {% include 'footer.html' %}
+
+    <script>
+        w3CodeColor(document.getElementById("syntaxHighlightedCode"));
+        {% include 'syntaxhighlight.js' %}
+    </script>
+</body>
+
+</html>
