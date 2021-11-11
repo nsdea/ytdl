@@ -3,6 +3,12 @@
 
 {% include 'head.html' %}
 
+<head>
+    <style type="text/css">
+        {{ css }}
+    </style>
+</head>
+
 <body>
     {% include 'header.html' %}
 
@@ -14,21 +20,13 @@
 
         {% for file in files %}
             <h3>{{ file.name }}</h3>
-
-            <pre class="brush:py;">>
-                <code>
-                    {{ file.code }}
-                </code>    
-            </pre>
+                {{ file.code|safe }}
+            </div>
         {% endfor %}
     </main>
 
     {% include 'footer.html' %}
 
-    <script>
-        w3CodeColor(document.getElementById("syntaxHighlightedCode"));
-        {% include 'syntaxhighlight.js' %}
-    </script>
-</body>
+    </body>
 
 </html>
